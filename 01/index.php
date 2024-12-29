@@ -1,11 +1,22 @@
 <h1>Dashboard</h1>
 <?php
 
-require 'load.php';
+
+require_once 'load.php';
+
 
 $posts = Post::all(5);
 
 $posts_count = Post::get_count();
+
+
+$total_comments = Comment::get_count();
+
+$replies_count = Reply::get_count();
+
+$postStatuses = PostStatus::all();
+
+dump($postStatuses);
 ?>
 
 <h2>All Posts | <?= $posts_count ?></h2>
@@ -24,3 +35,26 @@ foreach ($posts as $post):
 
     <?php
 endforeach;
+?>
+
+<div>
+    <p>Your database has <?=$total_comments;?> comments</p>
+</div>
+
+<div>
+    <p>Your database has <?=$replies_count;?> replies</p>
+</div>
+
+
+<div>
+    <h3>All Post Statuses</h3>
+
+    <div>
+        <?php 
+            foreach ($postStatuses as $postStatus) {
+                $type = $postStatus['type'];
+                echo "<h5>$type</h5>";
+            }
+        ?>
+    </div>
+</div>

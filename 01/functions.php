@@ -1,6 +1,6 @@
 <?php
 
-function dd($item, $die = true)
+function dnd($item, $die = true)
 {
     echo '<pre>';
     var_dump($item);

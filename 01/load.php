@@ -1,7 +1,5 @@
 <?php
 
-require 'functions.php';
+require_once 'vendor/autoload.php';
 
-require 'classes/Post.php';
-
-require 'classes/User.php';
+Model::connct();

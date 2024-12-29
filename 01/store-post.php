@@ -1,7 +1,7 @@
 <h1>Storing post.....</h1>
 
 <?php
-include 'load.php';
+require_once 'load.php';
 
 
 // Validation

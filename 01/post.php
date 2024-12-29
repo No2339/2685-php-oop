@@ -1,7 +1,7 @@
 <h1>Post</h1>
 
 <?php
-require 'load.php';
+require_once 'load.php';
 
 $id = $_GET['id'] ?? '';
 

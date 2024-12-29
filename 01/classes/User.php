@@ -1,17 +1,21 @@
 <?php
-class User
+
+
+class User extends Model
 {
-    static function all($limit = null)
+    //    Constants
+    const TABLE = 'users';
+
+
+    static function admins()
     {
-        $db = new mysqli('localhost', 'root', '', '2685_php_posts');
 
-        $qry = 'SELECT * FROM `pst_users` WHERE `deleted_at` IS NULL';
+        $table = 'pst_' . static::TABLE;
 
-        if ($limit) {
-            $qry .= " LIMIT $limit";
-        }
+        // $qry = 'SELECT * FROM `pst_' . static::TABLE . '` WHERE `roles` = "admin";';
+        $qry = "SELECT * FROM `$table` WHERE `roles` = 'admin';";
 
-        $res = $db->query($qry);
+        $res = self::$db->query($qry);
 
         return mysqli_fetch_all($res, MYSQLI_ASSOC);
     }
