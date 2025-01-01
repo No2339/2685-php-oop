@@ -1,3 +1,13 @@
+<?php
+require_once 'layout/header.php';
+// dd($_SESSION['roles']);
+
+if (!authorize(['user', 'admin']))
+    return not_permitted();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,3 +74,5 @@
 </body>
 
 </html>
+
+<?php require_once 'layout/footer.php';

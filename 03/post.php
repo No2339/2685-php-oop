@@ -1,7 +1,7 @@
 <h1>Post</h1>
 
 <?php
-require_once 'load.php';
+require_once 'layout/header.php';
 
 $id = $_GET['id'] ?? '';
 
@@ -12,4 +12,6 @@ if ($id === '') {
 
 $post = Post::show($id);
 
-dd($post);
+dump($post);
+
+require_once 'layout/footer.php';

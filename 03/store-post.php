@@ -1,5 +1,3 @@
-<h1>Storing post.....</h1>
-
 <?php
 require_once 'load.php';
 
