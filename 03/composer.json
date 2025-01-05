@@ -1,8 +1,0 @@
-{
-    "autoload": {
-        "psr-4": {"": "classes/"}
-    },
-    "require-dev": {
-        "symfony/var-dumper": "^7.2"
-    }
-}
