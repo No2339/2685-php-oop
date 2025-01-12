@@ -4,14 +4,19 @@ require_once '../load.php';
 
 if (isset($_SESSION['token'])) {
     header('Location: /');
+    exit();
 }
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $res = Auth::login($_POST['email'], $_POST['password']);
 
     if ($res === true) {
+       
         $_SESSION['token'] = bin2hex(random_bytes(16)); 
+        $_SESSION['roles'] = Auth::getUserRole($_POST['email']);
+        $_SESSION['user_id'] = Auth::getUserId($_POST['email']); 
         header('Location: /'); 
+        exit();
     }
 
     $errors = $res;  
@@ -31,8 +36,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                 type="email" 
                 name="email" 
                 id="email" 
-              
-                class="w-full px-4 py-2 border rounded-md "
+                class="w-full px-4 py-2 border rounded-md"
             >
             <p class="text-red-500 text-sm mt-1"><?= @$errors['email']; ?></p>
         </div>
@@ -43,8 +47,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                 type="password" 
                 name="password" 
                 id="password" 
-                
-                class="w-full px-4 py-2 border rounded-md "
+                class="w-full px-4 py-2 border rounded-md"
             >
             <p class="text-red-500 text-sm mt-1"><?= @$errors['password']; ?></p>
         </div>

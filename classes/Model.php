@@ -5,10 +5,11 @@ class Model
     static $db;
 
     
-static function connct()
+    static function connct()
     {
         Model::$db = new mysqli('localhost', 'root', '', '2685_php_posts');
 
+      
     }
     //  Recent Posts 5 Limits
     static function all($limit = null)
@@ -17,7 +18,7 @@ static function connct()
 
          $qry="SELECT * FROM $table WHERE `deleted_at` IS NULL ORDER BY created_at DESC" ;
 
- 
+
 
          if ($limit) {
          $qry .= "  Limit $limit";
@@ -60,7 +61,7 @@ static function connct()
   //  Show Post 
 static function show($id)
 {
-    $db = new mysqli('localhost', 'root', '', '2685_php_posts');
+    
 
     $qry = "SELECT pst_users.name, pst_posts.body,  pst_posts.title , pst_posts.user_id , pst_posts.created_at
 FROM pst_posts

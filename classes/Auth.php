@@ -2,6 +2,8 @@
 
 class Auth
 {
+
+    // the login
     static function login($email, $password)
     {
         $errors = [];
@@ -41,4 +43,21 @@ class Auth
 
         return true;
     }
+    // get user role
+    public static function getUserRole($email)
+    {
+        $qry = "SELECT `roles` FROM `pst_users` WHERE `email` = '$email'";
+        $result = Model::$db->query($qry);
+        return $result->fetch_assoc()['roles'] ?? 'user';
+    }
+    
+    // get user role
+    public static function getUserId($email)
+    {
+        $qry = "SELECT `id` FROM `pst_users` WHERE `email` = '$email'";
+        $result = Model::$db->query($qry);
+        return $result->fetch_assoc()['id'] ?? null;
+    }
+    
+    
 }
